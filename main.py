@@ -23,6 +23,10 @@ class text_input(BaseModel):
 
 analyzer = AnalyzerEngine()
 
+@app.get("/")
+async def root():
+    return {"message": "Welcome to my web app!"}
+
 @app.post('/text')
 async def analyze_text(input_text : text_input):
   analyzed_text = analyzer.analyze(input_text.text, language="en")
